@@ -15,7 +15,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 10
-		}
+		},
+		"mean" :5
 	},
 	"Creatinine" : {
 		"fullname" : "Creatinine",
@@ -33,7 +34,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 100
-		}
+		},
+		"mean" :50
 	},
 	"K" : {
 		"fullname" : "Potassium",
@@ -51,7 +53,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 12
-		}
+		},
+		"mean" :6
 	},
 	"Ca" : {
 		"fullname" : "Calcium",
@@ -69,7 +72,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 5
-		}
+		},
+		"mean" :2.5
 	},
 	"Urea2" : {
 		"fullname" : "Urea2",
@@ -87,7 +91,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 10
-		}
+		},
+		"mean" :5
 	},
 	"Creatinine2" : {
 		"fullname" : "Creatinine2",
@@ -105,7 +110,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 100
-		}
+		},
+		"mean" :50
 	},
 	"K2" : {
 		"fullname" : "Potassium2",
@@ -123,7 +129,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 12
-		}
+		},
+		"mean" :6
 	},
 	"Ca2" : {
 		"fullname" : "Calcium2",
@@ -141,7 +148,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 5
-		}
+		},
+		"mean" :2.5
 	},
 	"Urea3" : {
 		"fullname" : "Urea3",
@@ -159,7 +167,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 10
-		}
+		},
+		"mean" :5
 	},
 	"Creatinine3" : {
 		"fullname" : "Creatinine3",
@@ -177,7 +186,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 100
-		}
+		},
+		"mean" :50
 	},
 	"K3" : {
 		"fullname" : "Potassium3",
@@ -195,7 +205,8 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 12
-		}
+		},
+		"mean" :6
 	},
 	"Ca3" : {
 		"fullname" : "Calcium3",
@@ -213,6 +224,7 @@
 		"axis" : {
 			"min" : 0,
 			"max" : 5
-		}
+		},
+		"mean" :2.5
 	}
 }

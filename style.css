@@ -45,3 +45,25 @@ body{
 #back-button {
 	margin-bottom: 10px;
 }
+
+/* normal range */
+.c3-region.regionX {
+	fill:green;
+	fill-opacity: 0.5;
+}
+
+.c3-region.regionHigh, .c3-region.regionLow {
+  fill: red;
+}
+.c3-region.regionNormal {
+  fill: green;
+}
+
+.c3-region.regionHigh rect, .c3-region.regionLow rect, .c3-region.regionNormal rect{
+	fill-opacity: 1 !important;
+}
+
+.range-label line {
+	stroke: black;
+	stroke-width: 3px;
+}

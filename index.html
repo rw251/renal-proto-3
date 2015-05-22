@@ -40,22 +40,22 @@
         </ul>
       </div>
       <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
       </div>
       <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
       </div>
       <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
+        <div class="col-sm-3 item-slot"></div>
       </div>
     </div>
 
@@ -113,6 +113,8 @@
           <span>{{value}}</span>
           <span class="blood-units">{{units}}</span>
         </div>
+        <div id="{{chartid}}" class="range-chart">
+        </div>
         <div class="blood-source">
           Source: {{source}}
         </div>
@@ -129,11 +131,25 @@
         <h4 class="panel-title">{{name}}</h4>
       </div>
       <div class="panel-body">
-        <div class="blood-value">
-          <span>{{value}}</span>
-          <span class="blood-units">{{units}}</span>
-          <i class="fa fa-arrow{{direction}} blood-change"></i>
-          <span class="blood-change">{{change}}</span>
+        <div class="row">
+          <div class="col-sm-6 blood-value">
+            <span>{{value}}</span>
+            <span class="blood-units">{{units}}</span>
+            <i class="fa fa-arrow{{direction}} blood-change"></i>
+            <span class="blood-change">{{change}}</span>
+          </div>
+          <div class="col-sm-3">
+            <div>Standard range:</div>
+            <div>Minimum:</div>
+            <div>Maximum:</div>
+            <div>Mean:</div>
+          </div>
+          <div class="col-sm-3">
+            <div>[{{normal.min}}, {{normal.max}}]</div>
+            <div>{{axis.min}}</div>
+            <div>{{axis.max}}</div>
+            <div>{{mean}}</div>
+          </div>
         </div>
       </div>
     </div>
