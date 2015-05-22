@@ -2,109 +2,46 @@
 @import url('assets/css/fontawesome/font-awesome.min.css'); /*Icons Fonts*/
 
 body{
-	background-color:#f9f9f9;
+	background-color:rgb(228,232,241);
 	color:#85868d;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	position:relative;
 	padding-top: 50px;
 }
 
-.starter-template {
-  padding: 20px 15px 0px 15px;
-}
-
-.navbar .container {
-	width: auto;
-	background-color: rgb(242,242,244);
-}
-
 .chart-panel {
-	min-height: 150px;
-	border: 1px black dashed;
-	margin-bottom: 10px;
+	min-height: 450px;
 }
 
-/* ensure difference between panel-body and max-height is 130px */
-.value-panel .panel-body {
-	min-height: 830px;
-}
-
-@media screen and (max-height: 960px) {
-	.value-panel .panel-body {
-		min-height: 750px;
-	}
-}
-
-
-@media screen and (max-height: 880px) {
-	.value-panel .panel-body {
-		min-height: 592px;
-	}
-}
-
-
-@media screen and (max-height: 722px) {
-	.value-panel .panel-body {
-		min-height: 492px;
-	}
-}
-
-@media screen and (max-height: 622px) {
-	.value-panel .panel-body {
-		min-height: 300px;
-	}
-}
-
-.chart-panel-wrapper .panel-body{
-	max-height:830px;
-}
-
-@media screen and (max-height: 960px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 750px;
-	}
-}
-
-@media screen and (max-height: 880px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 592px;
-	}
-}
-
-@media screen and (max-height: 722px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 492px;
-	}
-}
-
-@media screen and (max-height: 622px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 300px;
-	}
-}
-
-.value-item {
-	border: 1px black dashed;
-	margin-bottom: 5px;	
-	padding: 10px;
-	text-align: center;
-	font-weight: bold;
-	border-radius: 10px;
-}
 .value-item:hover {
 	cursor: pointer;
 	background-color: #ccc;
 	border: 1px gold solid;
 }
 
-.value-item.selected {
-	background-color: #eee;
-	border: 2px gold solid;
-	padding-top: 9px;
-	padding-bottom: 9px;
+.panel-title {
+	font-weight: 600;
+	color: #111;
 }
 
-.c3-region.regionX {
-	fill:green;
-	fill-opacity: 0.5;
+.blood-value {
+	font-size: 32px;
+	color: rgb(47,131,226);
+}
+
+.blood-units {
+	font-size: 12px;
+}
+
+.blood-source, .blood-date{
+	font-size: 12px;
+}
+
+.blood-change {
+	font-size: 16px;
+	color: #666;
+}
+
+#back-button {
+	margin-bottom: 10px;
 }
