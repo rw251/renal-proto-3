@@ -3,20 +3,19 @@
 
 body{
 	background-color:rgb(228,232,241);
-	color:#85868d;
 	font-family: 'Open Sans', sans-serif;
 	position:relative;
-	padding-top: 50px;
-}
-
-.chart-panel {
-	min-height: 450px;
+	padding-top: 30px;
 }
 
 .value-item:hover {
 	cursor: pointer;
 	background-color: #ccc;
 	border: 1px gold solid;
+}
+
+.value-item .panel-body {
+	padding-top: 0;
 }
 
 .panel-title {
@@ -66,4 +65,95 @@ body{
 .range-label line {
 	stroke: black;
 	stroke-width: 3px;
+}
+
+.starter-template {
+  padding: 20px 15px 0px 15px;
+}
+
+.navbar .container {
+	width: auto;
+	background-color: rgb(242,242,244);
+}
+
+.chart-panel {
+	border: 1px black dashed;
+	margin-bottom: 10px;
+}
+
+.chart-panel > div {
+	min-height: 150px;
+}
+
+.panel-body-small {
+	padding: 5px 15px;
+}
+
+/* ensure difference between panel-body and max-height is 130px */
+.value-panel > .panel > .panel-body {
+	height: 830px;
+}
+
+@media screen and (max-height: 960px) {
+	.value-panel > .panel > .panel-body {
+		height: 750px;
+	}
+}
+
+
+@media screen and (max-height: 880px) {
+	.value-panel > .panel > .panel-body {
+		height: 592px;
+	}
+}
+
+
+@media screen and (max-height: 722px) {
+	.value-panel > .panel > .panel-body {
+		height: 492px;
+	}
+}
+
+@media screen and (max-height: 622px) {
+	.value-panel > .panel > .panel-body {
+		height: 300px;
+	}
+}
+
+.chart-panel-wrapper .panel-body{
+	max-height:830px;
+}
+
+@media screen and (max-height: 960px) {
+	.chart-panel-wrapper .panel-body {
+		max-height: 750px;
+	}
+}
+
+@media screen and (max-height: 880px) {
+	.chart-panel-wrapper .panel-body {
+		max-height: 592px;
+	}
+}
+
+@media screen and (max-height: 722px) {
+	.chart-panel-wrapper .panel-body {
+		max-height: 492px;
+	}
+}
+
+@media screen and (max-height: 622px) {
+	.chart-panel-wrapper .panel-body {
+		max-height: 300px;
+	}
+}
+
+.value-item.selected {
+	background-color: #eee;
+	border: 1px gold solid;
+	padding: -2px;
+}
+
+.c3-lines {
+	display: none;
 }

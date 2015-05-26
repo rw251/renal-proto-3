@@ -76,8 +76,9 @@
   var addChart = function(item) {
     destroyCharts([item + '-chart']);
 
+    var id = $($('.chart-panel').children(':not(:has(*))')[0]).attr('id');
     var chartOptions = {
-      bindto: '#chart',
+      bindto: '#'+id,
       data: {
         x: 'x',
         columns: pb.data[item].trend
@@ -87,6 +88,9 @@
       },
       zoom: {
         enabled: true
+      },
+      legend: {
+        show:false
       },
       axis: {
         x: {
@@ -119,65 +123,45 @@
     };
 
     pb[item + '-chart'] = c3.generate(chartOptions);
-  };
 
-  var showPage = function(id) {
-    var template = $('#value-item').html();
+    var template = $('#range-panel').html();
     Mustache.parse(template);
 
-    $(".item-slot").each(function(index, value) {
-      if (index >= 10 || id * 10 + index >= pb.all.length) {
-        $(value).html("");
-      } else {
-        $(value).html(Mustache.render(template, pb.all[id * 10 + index]));
-        addRange(pb.all[id * 10 + index]);
-      }
-    });
-  };
-
-  var page = function(id) {
-    $(".page").hide();
-
-    $('#' + id).show();
+    $('#' +id).siblings().html(Mustache.render(template, pb.data[item]));
+    //Add title
+    d3.select('#'+id + ' svg').append('text')
+    .attr('x', d3.select('#'+id + ' svg').node().getBoundingClientRect().width / 5)
+    .attr('y', 16)
+    .attr('text-anchor', 'middle')
+    .style('font-size', '1.4em')
+    .style('font-weight', '600')
+    .text(pb.data[item].fullname + ' (' + pb.data[item].units +')');
   };
 
   pb.wireUpPages = function() {
-    page("overviewPage");
+    var template = $('#value-panel').html();
+    var valItemTemplate = $('#value-item').html();
+    Mustache.parse(template);
+    Mustache.parse(valItemTemplate);
+    $('#normal-panel .panel-body').html(Mustache.render(template, {
+      "items" : pb.normal
+    },{"value-item":valItemTemplate}));
+    $('#abnormal-panel .panel-body').html(Mustache.render(template, {
+      "items" : pb.abnormal
+    },{"value-item":valItemTemplate}));
 
-    //disable pagination
-    $("ul.pagination li").each(function(index, value) {
-      if (index > pb.all.length / 10) $(this).addClass("disabled");
-    });
-
-
-    showPage(0);
-
-    //pagination
-    $("ul.pagination li a").on('click', function() {
-      if ($(this).parent().hasClass("disabled")) return;
-
-      $("ul.pagination li").removeClass("active");
-      $(this).parent().addClass("active");
-
-      showPage(parseInt($(this).text()) - 1);
-    });
-
-    $('#overviewPage').on('click', '.value-item', function() {
+    $('.value-item').on('click', function(){
       var item = $(this).data('mx');
-
-      page('detailPage');
-
-      var template = $('#value-item-wide').html();
-      Mustache.parse(template);
-
-      $('#detail').html(Mustache.render(template, pb.data[item]));
-
-      addChart(item);
+      if($(this).hasClass('selected')){
+        $(pb[item+'-chart'].element).siblings().html("");
+        destroyCharts([item+'-chart']);
+      } else {
+        addChart(item);
+      }
+      $(this).toggleClass('selected');
     });
 
-    $('#back-button').on('click', function() {
-      page("overviewPage");
-    });
+  //  $('.value-panel > .panel > .panel-body').getNiceScroll().resize();
   };
 
   pb.loadData = function(callback) {
@@ -189,17 +173,9 @@
       var index = 0;
       for (var o in file) {
         if (file[o].value >= file[o].normal.min && file[o].value <= file[o].normal.max) {
-          pb.normal.push({
-            name: o,
-            value: file[o].value,
-            units: file[o].units
-          });
+          pb.normal.push(file[o]);
         } else {
-          pb.abnormal.push({
-            name: o,
-            value: file[o].value,
-            units: file[o].units
-          });
+          pb.abnormal.push(file[o]);
         }
         file[o].name = o;
         file[o].chartid = "chart-" + index++;
@@ -230,4 +206,5 @@ $(document).on('ready', function() {
   pb.loadData(pb.wireUpPages);
 
   $('#chart-panels .panel-body').niceScroll();
+  $('.value-panel > .panel > .panel-body').niceScroll();
 });
