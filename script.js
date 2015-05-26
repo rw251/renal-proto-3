@@ -1,6 +1,6 @@
 /*jslint browser: true*/
 /*jshint -W055 */
-/*global $, c3, Mustache, pb*/
+/*global $, c3, d3, Mustache, pb*/
 
 (function() {
   'use strict';
@@ -13,64 +13,6 @@
         delete pb[charts[i]];
       }
     }
-  };
-
-  var addRange = function(item) {
-    destroyCharts([item.chartid + '-chart']);
-
-    var chartOptions = {
-      bindto: '#'+item.chartid,
-      data: {
-        columns: [
-          []
-        ]
-      },
-      size: {
-        height: 50
-      },
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-      },
-      axis: {
-        x: {
-          min: item.axis.min,
-          max: item.axis.max,
-          show: false,
-          padding: 0,
-          height: 0
-        },
-        y: {
-          show: false
-        }
-      },
-      regions: [{
-        axis: 'x',
-        end: item.normal.min,
-        class: 'regionLow'
-      }, {
-        axis: 'x',
-        start: item.normal.min,
-        end: item.normal.max,
-        class: 'regionNormal'
-      }, {
-        axis: 'x',
-        start: item.normal.max,
-        class: 'regionHigh'
-      }],
-      grid: {
-        x: {
-          lines: [{
-            value: item.value,
-            class: 'range-label'
-          }]
-        }
-      }
-    };
-
-    pb[item.chartid + '-chart'] = c3.generate(chartOptions);
   };
 
   var addChart = function(item) {
@@ -160,8 +102,6 @@
       }
       $(this).toggleClass('selected');
     });
-
-  //  $('.value-panel > .panel > .panel-body').getNiceScroll().resize();
   };
 
   pb.loadData = function(callback) {
