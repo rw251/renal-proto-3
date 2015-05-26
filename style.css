@@ -36,44 +36,14 @@ body{
 	font-size: 12px;
 }
 
-.blood-change {
-	font-size: 16px;
-	color: #666;
-}
-
-#back-button {
-	margin-bottom: 10px;
-}
-
 /* normal range */
 .c3-region.regionX {
 	fill:green;
 	fill-opacity: 0.5;
 }
 
-.c3-region.regionHigh, .c3-region.regionLow {
-  fill: red;
-}
-.c3-region.regionNormal {
-  fill: green;
-}
-
-.c3-region.regionHigh rect, .c3-region.regionLow rect, .c3-region.regionNormal rect{
-	fill-opacity: 1 !important;
-}
-
-.range-label line {
-	stroke: black;
-	stroke-width: 3px;
-}
-
 .starter-template {
   padding: 20px 15px 0px 15px;
-}
-
-.navbar .container {
-	width: auto;
-	background-color: rgb(242,242,244);
 }
 
 .chart-panel {
