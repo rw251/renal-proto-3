@@ -28,6 +28,14 @@ body{
 	color: rgb(47,131,226);
 }
 
+.blood-value-normal {
+	color: green;
+}
+
+.blood-value-abnormal {
+	color: red;
+}
+
 .blood-units {
 	font-size: 12px;
 }
@@ -37,9 +45,9 @@ body{
 }
 
 /* normal range */
-.c3-region.regionX {
+.c3-region.regionX rect{
 	fill:green;
-	fill-opacity: 0.5;
+	fill-opacity: 0.5 !important;
 }
 
 .starter-template {
@@ -122,8 +130,4 @@ body{
 	background-color: #eee;
 	border: 1px gold solid;
 	padding: -2px;
-}
-
-.c3-lines {
-	display: none;
 }

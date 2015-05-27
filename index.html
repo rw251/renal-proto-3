@@ -117,7 +117,7 @@
         <h4 class="panel-title">{{name}}</h4>
       </div>
       <div class="panel-body">
-        <div class="blood-value">
+        <div class="blood-value blood-value-{{inRange}}">
           <span>{{value}}</span>
           <span class="blood-units">{{units}}</span>
         </div>
@@ -144,10 +144,13 @@
       Normal range: {{normal.min}} - {{normal.max}}
     </div>
     <div class="row">
-      Minimum value: {{axis.min}}
+      Minimum value: {{props.min}}
     </div>
     <div class="row">
-      Maximum value: {{axis.max}}
+      Maximum value: {{props.max}}
+    </div>
+    <div class="row">
+      Mean value: {{props.mean}}
     </div>
   </script>
 </body>
