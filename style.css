@@ -1,133 +1,109 @@
-/* Put your css in here */
-@import url('assets/css/fontawesome/font-awesome.min.css'); /*Icons Fonts*/
+@import url('assets/css/fontawesome/font-awesome.min.css');
+/*Icons Fonts*/
 
-body{
-	background-color:rgb(228,232,241);
-	font-family: 'Open Sans', sans-serif;
-	position:relative;
-	padding-top: 30px;
+body {
+  background-color: rgb(228, 232, 241);
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  padding-top: 30px;
 }
-
 .value-item:hover {
-	cursor: pointer;
-	background-color: #ccc;
-	border: 1px gold solid;
+  cursor: pointer;
+  background-color: #ccc;
+  border: 1px gold solid;
 }
-
 .value-item .panel-body {
-	padding-top: 0;
+  padding-top: 0;
 }
-
 .panel-title {
-	font-weight: 600;
-	color: #111;
+  font-weight: 600;
+  color: #111;
 }
-
 .blood-value {
-	font-size: 32px;
-	color: rgb(47,131,226);
+  font-size: 32px;
+  color: rgb(47, 131, 226);
 }
-
 .blood-value-normal {
-	color: green;
+  color: green;
 }
-
 .blood-value-abnormal {
-	color: red;
+  color: red;
 }
-
 .blood-units {
-	font-size: 12px;
+  font-size: 12px;
 }
-
-.blood-source, .blood-date{
-	font-size: 12px;
+.blood-source, .blood-date, .blood-range {
+  font-size: 12px;
 }
-
 /* normal range */
-.c3-region.regionX rect{
-	fill:green;
-	fill-opacity: 0.5 !important;
-}
 
+.c3-region.regionX rect {
+  fill: green;
+  fill-opacity: 0.5 !important;
+}
 .starter-template {
   padding: 20px 15px 0px 15px;
 }
-
 .chart-panel {
-	border: 1px black dashed;
-	margin-bottom: 10px;
+  border: 1px black dashed;
+  margin-bottom: 10px;
 }
-
 .chart-panel > div {
-	min-height: 150px;
+  min-height: 150px;
 }
-
 .panel-body-small {
-	padding: 5px 15px;
+  padding: 5px 15px;
 }
-
 /* ensure difference between panel-body and max-height is 130px */
+
 .value-panel > .panel > .panel-body {
-	height: 830px;
+  height: 830px;
 }
-
 @media screen and (max-height: 960px) {
-	.value-panel > .panel > .panel-body {
-		height: 750px;
-	}
+  .value-panel > .panel > .panel-body {
+    height: 750px;
+  }
 }
-
-
 @media screen and (max-height: 880px) {
-	.value-panel > .panel > .panel-body {
-		height: 592px;
-	}
+  .value-panel > .panel > .panel-body {
+    height: 592px;
+  }
 }
-
-
 @media screen and (max-height: 722px) {
-	.value-panel > .panel > .panel-body {
-		height: 492px;
-	}
+  .value-panel > .panel > .panel-body {
+    height: 492px;
+  }
 }
-
 @media screen and (max-height: 622px) {
-	.value-panel > .panel > .panel-body {
-		height: 300px;
-	}
+  .value-panel > .panel > .panel-body {
+    height: 300px;
+  }
 }
-
-.chart-panel-wrapper .panel-body{
-	max-height:830px;
+.chart-panel-wrapper .panel-body {
+  max-height: 830px;
 }
-
 @media screen and (max-height: 960px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 750px;
-	}
+  .chart-panel-wrapper .panel-body {
+    max-height: 750px;
+  }
 }
-
 @media screen and (max-height: 880px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 592px;
-	}
+  .chart-panel-wrapper .panel-body {
+    max-height: 592px;
+  }
 }
-
 @media screen and (max-height: 722px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 492px;
-	}
+  .chart-panel-wrapper .panel-body {
+    max-height: 492px;
+  }
 }
-
 @media screen and (max-height: 622px) {
-	.chart-panel-wrapper .panel-body {
-		max-height: 300px;
-	}
+  .chart-panel-wrapper .panel-body {
+    max-height: 300px;
+  }
 }
-
 .value-item.selected {
-	background-color: #eee;
-	border: 1px gold solid;
-	padding: -2px;
+  background-color: #eee;
+  border: 1px gold solid;
+  padding: -2px;
 }

@@ -15,24 +15,24 @@
     }
   };
 
-  var getDateString = function(date){
-    var m = date.getMonth()+1;
+  var getDateString = function(date) {
+    var m = date.getMonth() + 1;
     var d = date.getDate();
-    return date.getFullYear() + "-" + (m<10 ? "0" : "")+m+"-"+(d<10 ? "0" : "")+d;
+    return date.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (d < 10 ? "0" : "") + d;
   };
 
-  var slideUpCharts = function(){
+  var slideUpCharts = function() {
     var nextSlot = [];
 
     //for each panel
-    $('.chart-panel').children().each(function(index, value){
-      if(index%2 !== 0) return;
-      if($(value).not(':has(*)').length>0){
+    $('.chart-panel').children().each(function(index, value) {
+      if (index % 2 !== 0) return;
+      if ($(value).not(':has(*)').length > 0) {
         nextSlot.push($(value).attr('id'));
-      } else if(nextSlot.length>0) {
+      } else if (nextSlot.length > 0) {
         var id = nextSlot[0];
 
-        $('#'+id).parent().before($(value).parent());
+        $('#' + id).parent().before($(value).parent());
       }
     });
   };
@@ -41,9 +41,9 @@
     destroyCharts([item + '-chart']);
 
     var id = $($('.chart-panel').children(':not(:has(*))')[0]).attr('id');
-    if(!id) return false;
+    if (!id) return false;
     var chartOptions = {
-      bindto: '#'+id,
+      bindto: '#' + id,
       data: {
         x: 'x',
         columns: pb.data[item].trend
@@ -54,7 +54,7 @@
       zoom: {
         enabled: true
       },
-      tooltip:{
+      tooltip: {
         format: {
           title: function(x) {
             return getDateString(x) + " - Source: " + pb.data[item].sources[getDateString(x)];
@@ -62,7 +62,7 @@
         }
       },
       legend: {
-        show:false
+        show: false
       },
       axis: {
         x: {
@@ -99,15 +99,15 @@
     var template = $('#range-panel').html();
     Mustache.parse(template);
 
-    $('#' +id).siblings().html(Mustache.render(template, pb.data[item]));
+    $('#' + id).siblings().html(Mustache.render(template, pb.data[item]));
     //Add title
-    d3.select('#'+id + ' svg').append('text')
-    .attr('x', d3.select('#'+id + ' svg').node().getBoundingClientRect().width / 5)
-    .attr('y', 16)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '1.4em')
-    .style('font-weight', '600')
-    .text(pb.data[item].fullname + ' (' + pb.data[item].units +')');
+    d3.select('#' + id + ' svg').append('text')
+      .attr('x', d3.select('#' + id + ' svg').node().getBoundingClientRect().width / 5)
+      .attr('y', 16)
+      .attr('text-anchor', 'middle')
+      .style('font-size', '1.4em')
+      .style('font-weight', '600')
+      .text(pb.data[item].fullname + ' (' + pb.data[item].units + ')');
 
     return true;
   };
@@ -118,30 +118,34 @@
     Mustache.parse(template);
     Mustache.parse(valItemTemplate);
     $('#normal-panel .panel-body').html(Mustache.render(template, {
-      "items" : pb.normal
-    },{"value-item":valItemTemplate}));
+      "items": pb.normal
+    }, {
+      "value-item": valItemTemplate
+    }));
     $('#abnormal-panel .panel-body').html(Mustache.render(template, {
-      "items" : pb.abnormal
-    },{"value-item":valItemTemplate}));
+      "items": pb.abnormal
+    }, {
+      "value-item": valItemTemplate
+    }));
 
-    $('.value-item').on('click', function(){
+    $('.value-item').on('click', function() {
       var item = $(this).data('mx');
-      if($(this).hasClass('selected')){
-        $(pb[item+'-chart'].element).siblings().html("");
-        destroyCharts([item+'-chart']);
+      if ($(this).hasClass('selected')) {
+        $(pb[item + '-chart'].element).siblings().html("");
+        destroyCharts([item + '-chart']);
         $(this).removeClass('selected');
       } else {
-        if(addChart(item)) $(this).addClass('selected');
+        if (addChart(item)) $(this).addClass('selected');
       }
       slideUpCharts();
     });
   };
 
-  var getTrend = function(values, name){
+  var getTrend = function(values, name) {
     var x = ["x"];
     var vals = [name];
 
-    for(var i = 0; i < values.length; i++){
+    for (var i = 0; i < values.length; i++) {
       x.push(values[i].date);
       vals.push(values[i].value);
     }
@@ -149,29 +153,33 @@
     return [x, vals];
   };
 
-  var getSources = function(values){
+  var getSources = function(values) {
     var x = {};
 
-    for(var i = 0; i < values.length; i++){
+    for (var i = 0; i < values.length; i++) {
       x[values[i].date] = values[i].source;
     }
 
     return x;
   };
 
-  var getProps = function(values){
+  var getProps = function(values) {
     var min = values[0].value;
     var max = values[0].value;
     var tot = 0;
 
-    for(var i = 1; i < values.length; i++){
+    for (var i = 1; i < values.length; i++) {
       tot += values[i].value;
-      if(values[i].value < min) min = values[i].value;
-      if(values[i].value > max) max = values[i].value;
+      if (values[i].value < min) min = values[i].value;
+      if (values[i].value > max) max = values[i].value;
     }
     var mean = Math.round(100 * tot / values.length) / 100;
 
-    return {"mean" : mean, "max" : max, "min" : min};
+    return {
+      "mean": mean,
+      "max": max,
+      "min": min
+    };
   };
 
   pb.loadData = function(callback) {
@@ -185,9 +193,9 @@
         file[o].name = o;
         file[o].chartid = "chart-" + index++;
         file[o].trend = getTrend(file[o].values, o);
-        file[o].date = file[o].trend[0][file[o].trend[0].length-1];
-        file[o].value = file[o].trend[1][file[o].trend[1].length-1];
-        file[o].source = file[o].values[file[o].values.length-1].source;
+        file[o].date = file[o].trend[0][file[o].trend[0].length - 1];
+        file[o].value = file[o].trend[1][file[o].trend[1].length - 1];
+        file[o].source = file[o].values[file[o].values.length - 1].source;
         file[o].sources = getSources(file[o].values);
         file[o].props = getProps(file[o].values);
         if (file[o].value >= file[o].normal.min && file[o].value <= file[o].normal.max) {
