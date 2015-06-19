@@ -91,10 +91,31 @@
         start: pb.data[item].normal.min,
         end: pb.data[item].normal.max,
         class: 'regionX'
-      }]
+      }
+	  
+	  /*OPTION1,{
+        axis: 'y',
+        start: pb.data[item].axis.min,
+        end: pb.data[item].normal.min,
+        class: 'regionY'
+      },{
+        axis: 'y',
+        start: pb.data[item].normal.max,
+        end: pb.data[item].axis.max,
+        class: 'regionY'
+      }*/]
     };
 
     pb[item + '-chart'] = c3.generate(chartOptions);
+	
+	/*OPTION2
+	for(var i = 1; i < pb.data[item].trend[1].length; i++){
+		if(pb.data[item].trend[1][i] > pb.data[item].normal.max || pb.data[item].trend[1][i] < pb.data[item].normal.min) {
+			$('.c3-circles-' + item + ' .c3-circle-' + (i-1)).attr("class", $('.c3-circles-' + item + ' .c3-circle-' + (i-1)).attr("class") + " warning");
+		}
+	}
+	
+	*/
 
     var template = $('#range-panel').html();
     Mustache.parse(template);
