@@ -46,11 +46,12 @@ body {
 .c3-circle.warning{
 	fill: red !important;
 }*/
-/*OPTION1
+
+/*OPTION1*/
 .c3-region.regionY rect {
   fill: red;
   fill-opacity: 0.3 !important;
-}*/
+}
 .starter-template {
   padding: 20px 15px 0px 15px;
 }
